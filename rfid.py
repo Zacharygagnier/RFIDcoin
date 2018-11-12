@@ -31,12 +31,12 @@ while True:
 				t.start()
 			if ord(c) == 40:
 				print('submitting RFID')
-				print('submission is :' + string)
+				print('submission is :' + string['string'])
 				if t.is_alive():
 					t.cancel()
 				statusSound=db.removeCredit(string)
-				print('removed credit for : ' + string)
 				string['string'] = ''
+				print('removed credit for: ' + string['string'])
 			else:
 				string['string'] = string['string'] + chr(ord(c)+18)
 			#device.emit_click(uinput.KEY_F4)

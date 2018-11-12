@@ -14,11 +14,9 @@ device = uinput.Device([
 fp = open('/dev/hidraw0', 'rb')
 
 string =  ''
-
 def cancelString(totalString):
 	sound.play('reject')
 	totalStringstring = ''
-	
 
 t=Timer(2.5, cancelString, [string])
 
@@ -38,5 +36,9 @@ while True:
 				print('removed credit for : ' + string)
 				string = ''
 			else:
-				string = string + ord(c)
+				string = string + chr(ord(c))
+				print('chr(ord(c))')
+				print(chr(ord(c)))
+				print('ord(c)')
+				print(ord(c))
 			#device.emit_click(uinput.KEY_F4)

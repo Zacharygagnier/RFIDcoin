@@ -34,7 +34,8 @@ while True:
 				print('submission is :' + string['string'])
 				if t.is_alive():
 					t.cancel()
-				statusSound=db.removeCredit(string)
+				statusSound=db.removeCredit(string['string'])
+				sound.play(statusSound)
 				string['string'] = ''
 				print('removed credit for: ' + string['string'])
 			else:

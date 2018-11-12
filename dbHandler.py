@@ -20,19 +20,20 @@ class Connection:
 			return insertNew(self, ID)
 		self.c.execute('SELECT * FROM user WHERE tag=' + str(ID))
 		user=self.c.fetchone()
+		if user == None:
+			return 'reject'
 		type=user[2]
 		credits=user[3]
 		if type == -1:
 			self.insertNext = True
 			return 'create'
 		if user is None or credits == 0 and type > 0:
-			return "reject"
+			return 'reject'
 
-		self.c.execute("UPDATE user SET credit=" + str(credits-1))
+		self.c.execute('UPDATE user SET credit=' + str(credits-1))
 		self.conn.commit()
 		return "accept"
 
 	def addAllCredit(self):
 		self.c.execute('update user SET credit=10 where credit<10')
 		self.conn.commit()
-

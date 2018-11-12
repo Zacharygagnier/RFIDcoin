@@ -32,6 +32,7 @@ while True:
 			print(c)
 			if ord(c) == 40:
 				print('submitting RFID')
+				print('submission is :' + string)
 				if t.is_alive():
 					t.cancel()
 				statusSound=db.removeCredit(string)

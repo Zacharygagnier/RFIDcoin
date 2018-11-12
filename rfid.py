@@ -11,7 +11,7 @@ device = uinput.Device([
 	uinput.KEY_F4
 	])
 
-fp = open('/dev/hidraw0', 'rb')
+fp = open('/dev/hidraw0', 'rt')
 
 string =  ''
 def cancelString(totalString):
@@ -37,8 +37,11 @@ while True:
 				string = ''
 			else:
 				string = string + chr(ord(c))
+				print(type(c))
 				print('chr(ord(c))')
 				print(chr(ord(c)))
 				print('ord(c)')
-				print(ord(c))
+				print((ord(c)))
+				print('c')
+				print(c)
 			#device.emit_click(uinput.KEY_F4)

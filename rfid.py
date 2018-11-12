@@ -29,7 +29,6 @@ while True:
 			if not t.isAlive():
 				t=Timer(2.5, cancelString, [string])
 				t.start()
-			print(c)
 			if ord(c) == 40:
 				print('submitting RFID')
 				print('submission is :' + string)
@@ -39,5 +38,5 @@ while True:
 				print('removed credit for : ' + string)
 				string = ''
 			else:
-				string = string + str(c)
+				string = string + ord(c)
 			#device.emit_click(uinput.KEY_F4)

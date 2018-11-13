@@ -37,6 +37,3 @@ class Connection:
 	def addAllCredit(self):
 		self.c.execute('update user SET credit=10 where credit<10')
 		self.conn.commit()
-
-test = Connection('testData.db')
-test.addAllCredit()

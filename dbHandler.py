@@ -30,7 +30,7 @@ class Connection:
 		if user is None or credits == 0 and type > 0:
 			return 'reject'
 
-		self.c.execute('UPDATE user SET credit=' + str(credits-1))
+		self.c.execute('UPDATE user SET credit=' + str(credits-1) + ' WHERE tag=' + str(ID))
 		self.conn.commit()
 		return "accept"
 

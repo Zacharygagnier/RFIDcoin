@@ -8,7 +8,7 @@ class Connection:
 		self.insertNext = False
 
 	def  insertNew(self, ID):
-		self.c.execute('INSERT OR IGNORE INTO user(tag, type, credit, creation_date) VALUES(' + ID + ', 1, 10, datetime("now"))')
+		self.c.execute('INSERT OR IGNORE INTO user(tag, type, credit, name, creation_date) VALUES(' + ID + ', 1, 10, "undefined", datetime("now"))')
 		self.conn.commit()
 		return 'created'
 

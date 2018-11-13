@@ -1,5 +1,5 @@
 import sys
-#import uinput
+import uinput
 import time
 from dbHandler import Connection
 from soundHandler import Sound
@@ -9,9 +9,7 @@ from evdev import UInput, ecodes as e
 db=Connection('testData.db')
 sound=Sound('./sounds/')
 
-#device = uinput.Device([
-#	uinput.KEY_Q
-#	])
+device = uinput.Device([uinput.KEY_Q])
 ui = UInput()
 
 def hold(key):

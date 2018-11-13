@@ -29,8 +29,7 @@ while True:
 			if not t.isAlive():
 				t=Timer(2.5, cancelString, [string])
 				t.start()
-			if ord(c) == 31:
-				string['string']='123456789'
+			if ord(c) == 40:
 				print('submitting RFID')
 				print('submission is :' + string['string'])
 				if t.is_alive():

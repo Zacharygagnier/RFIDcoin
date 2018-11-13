@@ -8,7 +8,7 @@ class Connection:
 		self.insertNext = False
 
 	def  insertNew(self, ID):
-		self.c.execute('INSERT INTO user(tag, type, credit, creation_date) VALUES(' + ID + ', 1, 10, datetime("now")) ON CONFLICT(ID) DO UPDATE SET credit=10')
+		self.c.execute('INSERT OR IGNORE INTO user(tag, type, credit, creation_date) VALUES(' + ID + ', 1, 10, datetime("now"))')
 		self.conn.commit()
 		return 'created'
 
@@ -17,7 +17,7 @@ class Connection:
 
 	def removeCredit(self, ID):
 		if self.insertNext:
-			return insertNew(self, ID)
+			return self.insertNew(ID)
 		self.c.execute('SELECT * FROM user WHERE tag=' + str(ID))
 		user=self.c.fetchone()
 		if user == None:
@@ -37,3 +37,6 @@ class Connection:
 	def addAllCredit(self):
 		self.c.execute('update user SET credit=10 where credit<10')
 		self.conn.commit()
+
+test = Connection('testData.db')
+test.addAllCredit()

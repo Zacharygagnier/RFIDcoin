@@ -8,7 +8,7 @@ db=Connection('testData.db')
 sound=Sound('./sounds/')
 
 device = uinput.Device([
-	uinput.KEY_F4
+	uinput.KEY_Q
 	])
 
 fp = open('/dev/hidraw0', 'rb')
@@ -21,7 +21,6 @@ def cancelString(totalString):
 	totalString['string']  = ''
 
 t=Timer(2.5, cancelString, [string])
-
 while True:
 	buffer = fp.read(8)
 	for c in buffer:
@@ -35,9 +34,10 @@ while True:
 				if t.is_alive():
 					t.cancel()
 				statusSound=db.removeCredit(string['string'])
+				if statusSound == 'accept':
+					device.emit_click(uinput.KEY_Q)
 				sound.play(statusSound)
 				string['string'] = ''
 				print('removed credit for: ' + string['string'])
 			else:
 				string['string'] = string['string'] + chr(ord(c)+19)
-			#device.emit_click(uinput.KEY_F4)

@@ -1,11 +1,13 @@
 import sqlite3
 from threading import Timer
+
 class Connection:
 	def __init__(self, dbName):
 		self.conn = sqlite3.connect(dbName)
 		self.conn.row_factory = sqlite3.Row
 		self.c = self.conn.cursor()
 		self.insertNext = False
+
 
 	def  insertNew(self, ID):
 		self.c.execute('INSERT OR IGNORE INTO user(tag, type, credit, name, creation_date) VALUES(' + ID + ', 1, 10, "undefined", datetime("now"))')
@@ -37,3 +39,4 @@ class Connection:
 	def addAllCredit(self):
 		self.c.execute('update user SET credit=10 where credit<10')
 		self.conn.commit()
+

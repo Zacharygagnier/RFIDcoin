@@ -1,15 +1,28 @@
 import sys
-import uinput
+#import uinput
+import time
 from dbHandler import Connection
 from soundHandler import Sound
 from threading import Timer
+from evdev import UInput, ecodes as e
 
 db=Connection('testData.db')
 sound=Sound('./sounds/')
 
-device = uinput.Device([
-	uinput.KEY_Q
-	])
+#device = uinput.Device([
+#	uinput.KEY_Q
+#	])
+ui = UInput()
+
+def hold(key):
+	ui.write(e.EV_KEY, key, 1)
+	ui.syn()
+	return 0
+
+def release(key):
+	ui.write(e.EV_KEY, key, 0)
+	ui.syn()
+	return 0
 
 fp = open('/dev/hidraw0', 'rb')
 
@@ -21,6 +34,7 @@ def cancelString(totalString):
 	totalString['string']  = ''
 
 t=Timer(2.5, cancelString, [string])
+
 while True:
 	buffer = fp.read(8)
 	for c in buffer:
@@ -35,7 +49,9 @@ while True:
 					t.cancel()
 				statusSound=db.removeCredit(string['string'])
 				if statusSound == 'accept':
-					device.emit_click(uinput.KEY_Q)
+					hold(e.KEY_Q)
+					time.sleep(1)
+					release(e.KEY_Q)
 				sound.play(statusSound)
 				string['string'] = ''
 				print('removed credit for: ' + string['string'])

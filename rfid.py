@@ -30,7 +30,7 @@ t=Timer(2.5, cancelString, [string])
 while True:
 	buffer = fp.read(8)
 	for c in buffer:
-		if ord(c) > 0:
+		if ord(c) > 29 and ord(c) < 41:
 			if not t.isAlive():
 				t=Timer(2.5, cancelString, [string])
 				t.start()
@@ -47,4 +47,8 @@ while True:
 				string['string'] = ''
 				print('removed credit for: ' + string['string'])
 			else:
-				string['string'] = string['string'] + chr(ord(c)+19)
+				if ord(c) == 39:
+					string['string'] = string['string'] + '0'
+				else:
+					string['string'] = string['string'] + chr(ord(c)+19)
+

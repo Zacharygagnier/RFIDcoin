@@ -1,1 +1,4 @@
 *.pyc
+user
+testData
+testData.db

@@ -9,8 +9,8 @@ class Connection:
 		self.insertNext = False
 
 
-	def  insertNew(self, ID):
-		self.c.execute('INSERT OR IGNORE INTO user(tag, type, credit, name, creation_date) VALUES(' + ID + ', 1, 10, "undefined", datetime("now"))')
+	def  insertNew(self, ID, type=1, credit=10, name='user'):
+		self.c.execute('INSERT OR IGNORE INTO user(tag, type, credit, name, creation_date) VALUES( {}, {}, {}, "{}", datetime("now"))'.format(ID, type, credit, name))
 		self.conn.commit()
 		self.insertNext = False
 		return 'created'
@@ -41,3 +41,6 @@ class Connection:
 		self.c.execute('update user SET credit=10 where credit<10')
 		self.conn.commit()
 
+
+test = Connection('testData.db')
+test.insertNew('123456790')

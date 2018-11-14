@@ -7,8 +7,6 @@ class Reader:
 		self.fp = open(bufferInput, 'rb')
 
 	def parseCard(self):
-		time.sleep(2)
-		return '12343212'
 		string = {'string': ''}
 		def cancelString(totalString):
 			totalString['string'] = ''

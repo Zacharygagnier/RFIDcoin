@@ -11,11 +11,10 @@ def createCard():
 	string = {'string': ''}
 	name = raw_input("What name should this card have?: ")
 	type = raw_input("What privelage does this card have? -1 = debug 0=admin 1=user: ")
-	credit = raw_input("How many credits should this card start with?")
+	credit = raw_input("How many credits should this card start with?: ")
 	print("Scan card now")
 
 	def cancelString(totalString):
-	        sound.play('reject')
 	        print(totalString['string'])
 	        totalString['string']  = ''
 
@@ -31,7 +30,7 @@ def createCard():
 	                                t.start()
         	                if ord(c) == 40:
 	                                db.insertNew(string['string'], type, credit, name)
-					answer = raw_input("Card Created, create another? y/n")
+					answer = raw_input("Card Created, create another? y/n: ")
 					if answer == "y":
 						createCard()
 					else:

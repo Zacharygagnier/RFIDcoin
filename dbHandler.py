@@ -37,6 +37,6 @@ class Connection:
 		self.conn.commit()
 		return "accept"
 
-	def addAllCredit(self):
-		self.c.execute('update user SET credit=10 where credit<10')
+	def addAllCredit(self, credit = 10):
+		self.c.execute('update user SET credit={} where credit<{}'.format(credit, credit))
 		self.conn.commit()

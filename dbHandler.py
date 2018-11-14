@@ -12,6 +12,7 @@ class Connection:
 	def  insertNew(self, ID):
 		self.c.execute('INSERT OR IGNORE INTO user(tag, type, credit, name, creation_date) VALUES(' + ID + ', 1, 10, "undefined", datetime("now"))')
 		self.conn.commit()
+		self.insertNext = False
 		return 'created'
 
 	def insertTimeOut(self):

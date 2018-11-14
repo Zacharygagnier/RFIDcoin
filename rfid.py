@@ -1,6 +1,7 @@
 import sys
 import uinput
 import time
+import evdev
 from dbHandler import Connection
 from soundHandler import Sound
 from threading import Timer
@@ -9,20 +10,13 @@ from evdev import UInput, ecodes as e
 db=Connection('testData.db')
 sound=Sound('./sounds/')
 
-device = uinput.Device([uinput.KEY_Q])
+
+
+device = evdev.InputDevice('/dev/input/event3') #CHANGE IF NOT RESPONDING ON SPECIFIC INPUT
+fp = open('/dev/hidraw0', 'rb') #CHANGE IF NOT READING INPUT
+
 ui = UInput()
 
-def hold(key):
-	ui.write(e.EV_KEY, key, 1)
-	ui.syn()
-	return 0
-
-def release(key):
-	ui.write(e.EV_KEY, key, 0)
-	ui.syn()
-	return 0
-
-fp = open('/dev/hidraw0', 'rb')
 
 string = {'string': ''}
 
@@ -47,9 +41,8 @@ while True:
 					t.cancel()
 				statusSound=db.removeCredit(string['string'])
 				if statusSound == 'accept':
-					hold(e.KEY_Q)
-					time.sleep(1)
-					release(e.KEY_Q)
+               				device.write(e.EV_KEY, e.BTN_SELECT, 1)  # CHANGE BUTTON HERE  e.BTN_WHATEVER
+			                device.write(e.EV_KEY, e.BTN_SELECT, 0)  # CHANGE BUTTON HERE TOO
 				sound.play(statusSound)
 				string['string'] = ''
 				print('removed credit for: ' + string['string'])

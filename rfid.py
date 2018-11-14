@@ -42,6 +42,7 @@ while True:
 				statusSound=db.removeCredit(string['string'])
 				if statusSound == 'accept':
                				device.write(e.EV_KEY, e.BTN_SELECT, 1)  # CHANGE BUTTON HERE  e.BTN_WHATEVER
+					time.sleep(.3)
 			                device.write(e.EV_KEY, e.BTN_SELECT, 0)  # CHANGE BUTTON HERE TOO
 				sound.play(statusSound)
 				string['string'] = ''

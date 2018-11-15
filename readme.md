@@ -9,7 +9,7 @@ Currently that's the only way I have of both reading input from only a specific 
 a key event to retroarch. If you have a better way that can actually work with retroarch, please let me know since it seems to
 an active issue in retroarch.
 
-the button press to change is located in rfid.py as well as the database location, input device, and output device
+#### the button press to change is located in rfid.py as well as the database location, input device, and output device
 
 [**the keys that can be used are located here**](https://www.freedesktop.org/software/libevdev/doc/1.4/kernel_header.html)
 

@@ -17,5 +17,5 @@ def createCard():
 	answer = raw_input("Card Created, create another? y/n: ")
 
 while True:
-	if createCard() == n:
+	if createCard() == 'n':
 		sys.exit()

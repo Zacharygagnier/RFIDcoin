@@ -1,4 +1,4 @@
 from dbHandler import Connection
 
-db=Connection('testData.db')
-db.allAllCredit()
+db=Connection('database/testData.db')
+db.addAllCredit()

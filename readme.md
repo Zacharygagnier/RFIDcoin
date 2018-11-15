@@ -37,6 +37,15 @@ the database used is sqlite3 and has only a single table created with:
 ```
 CREATE TABLE user(id INTEGER PRIMARY KEY AUTOINCREMENT, tag TEXT UNIQUE, type INTEGER, credit INTEGER, name TEXT, creation_date DATETIME, last_played DATETIME);
 ```
+If you don't want to change rfid.py to the DB location:
 
+```
+#from inside downloaded repo
+cd database
+sqlite3 testData.db
+CREATE TABLE user(id INTEGER PRIMARY KEY AUTOINCREMENT, tag TEXT UNIQUE, type INTEGER, credit INTEGER, name TEXT, creation_date DATETIME, last_played DATETIME);
+.quit
+#database is now created with table in it
+```
 
 [if you're new to sqlite3 a simple tutorial should be enough to learn how to create it initally](http://raspberrywebserver.com/sql-databases/set-up-an-sqlite-database-on-a-raspberry-pi.html)

@@ -30,7 +30,7 @@ class Connection:
 		if type == -1:
 			self.insertNext = True
 			return 'create'
-		if user is None or credits == 0 and type > 0:
+		if user is None or credits < 1 and type > 0:
 			return 'reject'
 
 		self.c.execute('UPDATE user SET credit=' + str(credits-1) + ' WHERE tag=' + str(ID))

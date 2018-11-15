@@ -2,6 +2,8 @@
 
 This repository is a script to read inputs from an rfid reader or a similar reader that outputs numbers and ends with the enter key.
 
+This script was made for a specific use, if you feel like it can be broadened in a way you can put up a request through issues or make a pull request with changes
+
 **This script works by first reading inputs from /dev/hidraw, checks the database listed, and sends an event to a
 controller you have currently plugged in to emulate a keypress using /dev/input/event**
 

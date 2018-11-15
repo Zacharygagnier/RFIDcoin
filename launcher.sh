@@ -1,4 +1,4 @@
 #!/bin/sh
 # launcher.sh
-cd /home/pi/rfid
+cd /home/pi/RFIDcoin
 sudo python rfid.py

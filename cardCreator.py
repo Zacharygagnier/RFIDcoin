@@ -4,7 +4,7 @@ from dbHandler import Connection
 from readCardHandler import Reader
 from threading import Timer
 
-db = Connection('testData.db')
+db = Connection('database/testData.db')
 reader = Reader('/dev/hidraw0')
 
 def createCard():
@@ -15,9 +15,7 @@ def createCard():
 	print("Scan card now")
 	db.insertNew(reader.parseCard(), type, credit, name)
 	answer = raw_input("Card Created, create another? y/n: ")
-	if answer == "y":
-		createCard()
-	else:
-		sys.exit()
 
-createCard()
+while True:
+	if createCard() == n:
+		sys.exit()

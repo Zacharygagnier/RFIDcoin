@@ -5,12 +5,13 @@ import evdev
 from dbHandler import Connection
 from soundHandler import Sound
 from readCardHandler import Reader
+from config import settings
 from evdev import UInput, ecodes as e
 
-db=Connection('database/testData.db') #CHANGE THIS FOR SEPERATE DATABASE
+db=Connection(settings['database'])
 sound=Sound('./sounds/')
-read=Reader('/dev/hidraw0') #CHANGE IF NOT READING INPUT FROM CARD READER
-device = evdev.InputDevice('/dev/input/event3') #CHANGE OUTPUTTING ON SPECIFIC INPUT DEVICE
+read=Reader(settings['inputDevice'])
+device = evdev.InputDevice(settings['outputDevice'])
 
 sound.play('accept')
 def processCard():
@@ -20,9 +21,9 @@ def processCard():
 	print(statusSound)
 	if statusSound == 'accept':
 		print('Accepted credit for: ' + tag)
-               	device.write(e.EV_KEY, e.BTN_SELECT, 1)  # CHANGE BUTTON HERE  e.BTN_WHATEVER
+               	device.write(e.EV_KEY, getattr(e, settings['keyPress']), 1)
 		time.sleep(.3)
-		device.write(e.EV_KEY, e.BTN_SELECT, 0)  # CHANGE BUTTON HERE TOO
+		device.write(e.EV_KEY, getattr(e, settings['keyPress']), 0)
 	sound.play(statusSound)
 
 while True:

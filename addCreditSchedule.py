@@ -1,4 +1,5 @@
 from dbHandler import Connection
+from config import settings
 
-db=Connection('database/testData.db')
-db.addAllCredit(10) #change this to change total credits per day
+db=Connection(settings['database'])
+db.addAllCredit(settings['startupCredits'])

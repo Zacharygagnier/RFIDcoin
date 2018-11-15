@@ -1,11 +1,12 @@
 import sys
 import time
+from config import settings
 from dbHandler import Connection
 from readCardHandler import Reader
 from threading import Timer
 
-db = Connection('database/testData.db')
-reader = Reader('/dev/hidraw0')
+db = Connection(settings['database'])
+reader = Reader(settings['inputDevice'])
 
 def createCard():
 	string = {'string': ''}

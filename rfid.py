@@ -7,10 +7,10 @@ from soundHandler import Sound
 from readCardHandler import Reader
 from evdev import UInput, ecodes as e
 
-db=Connection('database/testData.db')
+db=Connection('database/testData.db') #CHANGE THIS FOR SEPERATE DATABASE
 sound=Sound('./sounds/')
-read=Reader('/dev/hidraw0') #CHANGE IF NOT READING INPUT
-device = evdev.InputDevice('/dev/input/event3') #CHANGE IF NOT RESPONDING ON SPECIFIC INPUT
+read=Reader('/dev/hidraw0') #CHANGE IF NOT READING INPUT FROM CARD READER
+device = evdev.InputDevice('/dev/input/event3') #CHANGE OUTPUTTING ON SPECIFIC INPUT DEVICE
 
 sound.play('accept')
 def processCard():

@@ -9,7 +9,7 @@ controller you have currently plugged in to emulate a keypress using /dev/input/
 
 Currently that's the only way I have of both reading input from only a specific device as a background script and sending
 a key event to retroarch. If you have a better way that can actually work with retroarch, please let me know since it seems to
-an active issue in retroarch.
+be an active issue in retroarch.
 
 #### Any changes to input/output button and database can be made in the config.py file
 

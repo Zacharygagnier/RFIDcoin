@@ -9,7 +9,7 @@ Currently that's the only way I have of both reading input from only a specific 
 a key event to retroarch. If you have a better way that can actually work with retroarch, please let me know since it seems to
 an active issue in retroarch.
 
-#### the button press to change is located in rfid.py as well as the database location, input device, and output device
+#### Any changes to input/output button and database can be made in the config.py file
 
 [**the keys that can be used are located here**](https://www.freedesktop.org/software/libevdev/doc/1.4/kernel_header.html)
 
@@ -33,6 +33,7 @@ sudo pip install evdev
 there are multiple files:
 - rfid.py is the main script which can be started in the background by launcher.sh
 - cardCreator.py is a small command line program to add new cards with specific accesses and credits if you want to add more information than using the debug card with rfid.py
+- testInputDevice.py is a small script to run seperately and determine the /dev/hidraw which is where the rfid reader is 
 - testOutputDevice.py is a small script to run seperately to determine the /dev/input/event device and determine which button is availible to use
 - addCreditSchedule.py is a script that can be scheduled to run once every so often, this will reset credits to their maximum once depleted whenever it is run
 

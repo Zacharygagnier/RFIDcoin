@@ -24,13 +24,13 @@ sudo apt-get update
 sudo apt-get install libudev-dev
 git clone https://github.com/tuomasjjrasanen/python-uinput.git
 cd python-uinput
-python setup.py build
-sudo python setup.py install
+python3 setup.py build
+sudo python3 setup.py install
 cd ..
 sudo apt-get install alsa-utils mpg123
 sudo apt-get install sqlite3
-sudo apt-get install python-pip
-sudo pip install evdev
+sudo apt install python3-pip
+sudo pip3 install evdev
 ```
 there are multiple files:
 - rfid.py is the main script which can be started in the background by launcher.sh
